@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { motion } from "framer-motion";
 import './Works.css'
 import Upwork from "../../../img/Upwork.png";
@@ -6,14 +7,17 @@ import Amazon from "../../../img/amazon.png";
 import Shopify from "../../../img/Shopify.png";
 import Facebook from "../../../img/Facebook.png";
 import {Link} from 'react-scroll'
+import { themeContext } from "../../../Provider/Context";
 const Works = () => {
+    const theme = useContext(themeContext);
+    const darkMode = theme.state.darkMode;
     return (
         <div className="works" id="works">
       {/* left side */}
       <div className="w-left">
         <div className="awesome">
           {/* dark Mode */}
-          <span >
+          <span style={{ color: darkMode ? "white" : "" }}>
             Works for All these
           </span>
           <span>Brands & Clients</span>

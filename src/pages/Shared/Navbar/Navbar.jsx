@@ -1,22 +1,29 @@
+import { useContext } from "react";
 import { Link } from 'react-router-dom';
 import './Navbar.css'
+import Toggle from './Toggle/Toggle';
+import { themeContext } from "../../../Provider/Context";
 const Navbar = () => {
 
-    // const navItems= <>
-    //     <li><Link to='/'>Home</Link></li>
-    //     <li><Link>Services</Link></li>
-    //     <li><Link>Experience</Link></li>
-    //     <li><Link>Portfolio</Link></li>
-    //     <li><Link>Testimonial</Link></li>
-    // </>
+  // const navItems= <>
+  //     <li><Link to='/'>Home</Link></li>
+  //     <li><Link>Services</Link></li>
+  //     <li><Link>Experience</Link></li>
+  //     <li><Link>Portfolio</Link></li>
+  //     <li><Link>Testimonial</Link></li>
+  // </>
 
 
-    return (
-      <div className="n-wrapper" id="Navbar">
+  const theme = useContext(themeContext);
+    const darkMode = theme.state.darkMode;
+
+
+  return (
+    <div style={{ background: darkMode ? "black" : "", color: darkMode ? "white" : "" }} className="n-wrapper" id="Navbar">
       {/* left */}
       <div className="n-left">
         <div className="n-name">Sharif</div>
-      
+        <Toggle />
       </div>
       {/* right */}
       <div className="n-right">
@@ -50,11 +57,11 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="contact" spy={true} smooth={true}>
-        <button className="button n-button">Contact</button>
+          <button className="button n-button">Contact</button>
         </Link>
       </div>
     </div>
-    );
+  );
 };
 
 export default Navbar;
